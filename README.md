@@ -1,4 +1,4 @@
-# vue-pt3
+# vuetify course
 
 ## Project setup
 ```
