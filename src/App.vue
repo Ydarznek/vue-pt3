@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <NavBar @toggleTheme="toggleTheme" />
+    <v-main>
+      <router-view :key="$route.fullPath" />
+    </v-main>
+    <BaseFooter />
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import NavBar from '@/components/NavBar'
+import BaseFooter from '@/components/BaseFooter'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { NavBar, BaseFooter },
+  methods: {
+    toggleTheme () {
+      this.$vuetify.theme.themes.dark.anchor = '#41b883'
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
   }
+
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
